@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <header class="bg-dark py-5">
+      <div class="container px-4 px-lg-5 my-5">
+          <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">معرفی مربیان و بازیکنان</h1>
+          </div>
+      </div>
+  </header>
+<section class="page-section bg-light" id="team">
+          <div class="container">
+              <div class="text-center">
+                  <h3 class="section-subheading text-muted">مربیان</h3>
+              </div>
+              <div class="row">
+                  {% for coach in coaches %}
+                      <div class="col-lg-4">
+                          <div class="team-member">
+                              <img class="mx-auto rounded-circle" src="{{coach.image.url}}" alt="..." />
+                              <h4>{{ coach.name }}</h4>
+                              <p class="text-muted">تجربه {{coach.expr_years_in_sk}} سال</p>
+                              <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fa fa-twitter"></i></a>
+                              <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fa fa-facebook-f"></i></a>
+                              <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fa fa-linkedin"></i></a>
+                          </div>
+                      </div>
+                  {% endfor %}
+
+              </div>
+          </div>
+      </section>
+
+<section class="page-section bg-light" id="team">
+        <div class="container">
+            <div class="text-center">
+                <!-- <h2 class="section-heading text-uppercase">Our Amazing Team</h2> -->
+                <h3 class="section-subheading text-muted">بازیکنان</h3>
+            </div>
+            <div class="row">
+                {% for player in players %}
+                      <div class="col-lg-4">
+                          <div class="team-member">
+                              <img class="mx-auto rounded-circle" src="{{player.image.url}}" alt="..." />
+                              <h4>{{ player.name }}</h4>
+                              <p class="text-muted">تجربه {{player.expr_years_in_sk}} سال</p>
+                              <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fa fa-twitter"></i></a>
+                              <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fa fa-facebook-f"></i></a>
+                              <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fa fa-linkedin"></i></a>
+                          </div>
+                      </div>
+                  {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+<!-- Bootstrap core JS-->
+
+
+{% endblock %}

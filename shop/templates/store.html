@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">خرید اسکیت حرفه ای </h1>
+                    <p class="lead fw-normal text-white-50 mb-0">تعداد محصولات {{item_count}}</p>
+                </div>
+            </div>
+    </header>
+
+<div class="container p-4">
+<div class="row row11 ">
+    <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+   <a href="{% url 'store' %}" style="color:#000000; text-decoration:none; "> همه </a>
+  </div>
+    {% for category in categories %}
+  <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+   <a href="{% url 'store' category.id %}" style="color:#000000; text-decoration:none; "> {{category.name}} </a>
+  </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+</div>
+
+
+    <section class="py-5">
+
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    {% for product in products %}
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="{{ product.image.url}}" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{product.title}}</h5>
+                                    <!-- Product price-->
+                                    تومان {{product.price}}
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'add' product.id %}">افزودن به سبد خرید</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+{% endblock %}

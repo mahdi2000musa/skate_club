@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+      <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">فدراسیون اسکیت و اخبار روز</h1>
+                </div>
+            </div>
+        </header>
+ <!-- Page Content-->
+       <div class="container px-4 px-lg-5">
+        <!-- Heading Row-->
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+            <div class="col-lg-7"><a href="{% url 'show_detail' top_views.id %}" ><img class="img-fluid rounded mb-4 mb-lg-0" src="{{top_views.image.url}}" alt="..." /></a></div>
+            <div class="col-lg-5">
+                <h2 class="font-weight-light">{{top_views.title}}</h2>
+            </div>
+        </div>
+        <!-- Call to Action-->
+        <div class="card text-white bg-secondary my-5 py-4 text-center">
+            <div class="card-body"><p class="text-white m-0">{{top_views.description}}</p></div>
+        </div>
+        <!-- Content Row-->
+        <div class="row gx-4 gx-lg-5">
+            {% for n in news %}
+            <div class="col-md-4 mb-5">
+                <div class="card h-1000">
+                    <div class="card-body">
+                        <h2 class="card-title">{{n.title|truncatewords:5}}</h2>
+
+                        <div class="container">
+                            <div class="card-text"> {{n.description|truncatewords:40}}   </div>
+                            <a href="{% url 'show_detail' n.id %}" class="btn btn-primary" data-toggle="collapse">اطلاعات بیشتر
+                         </a>
+                          </div>
+                   </div>
+                </div>
+            </div>
+
+{% endfor %}
+
+
+
+
+            </div>
+           </div>
+        </div>
+    </div>
+
+
+{% endblock %}
